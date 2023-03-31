@@ -143,6 +143,8 @@ class FreeplayState extends MusicBeatState
 			if (CoolUtil.fredMode)
 				sonnngNAmeee = "Karrd Kollision";
 
+			songs[i].rotAmount = FlxG.random.float(0, 12.5);
+
 			var songText:Alphabet = new Alphabet(0, portrait.y + portrait.height + 20, sonnngNAmeee, true, false);
 			grpSongs.add(songText);
 
@@ -212,6 +214,8 @@ class FreeplayState extends MusicBeatState
 
 			songs[i].portrait.x = FlxMath.lerp((FlxG.width / 2 + ((posind - curIndexOffset) * 600)) - (songs[i].portrait.width / 2), songs[i].portrait.x,
 				lerpAmount);
+			if (songs[i].songName.toLowerCase() != "normalized")
+				songs[i].portrait.angle += songs[i].rotAmount*e*127.001;
 			var a:Float = 0;
 			for (o in 0...songs[i].text.lettersArray.length)
 				a += songs[i].text.lettersArray[o].width * -0.5 * songs[i].text.textSize * songs[i].text.lettersArray[o].scale.x;
@@ -482,6 +486,9 @@ class SongMetadata
 	public var hiddenFromStoryMode:Bool = false;
 	public var unlockerKey:String = '';
 	public var hint:String = "";
+
+
+	public var rotAmount:Float = 0;
 
 	public function new(song:String, week:Int, songCharacter:String, color:Int, hideFromStoryMode:Bool, unlockerKey:String, hint:String)
 	{
