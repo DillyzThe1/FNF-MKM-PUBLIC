@@ -143,7 +143,7 @@ class FreeplayState extends MusicBeatState
 			if (CoolUtil.fredMode)
 				sonnngNAmeee = "Karrd Kollision";
 
-			songs[i].rotAmount = FlxG.random.float(0, 12.5);
+			songs[i].rotAmount = FlxG.random.float(0, 7.5);
 
 			var songText:Alphabet = new Alphabet(0, portrait.y + portrait.height + 20, sonnngNAmeee, true, false);
 			grpSongs.add(songText);
