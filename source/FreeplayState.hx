@@ -195,9 +195,25 @@ class FreeplayState extends MusicBeatState
 		#end
 	}
 
+	var fullElapsed:Float = 0;
+	var funnyStartTime:Float = 15;
 	override function update(e:Float)
 	{
+		fullElapsed += e;
 		super.update(e);
+
+		if (fullElapsed >= 15)
+		{
+			var funnyyyyy:Float = (fullElapsed - funnyStartTime)*25.75;
+			if (funnyyyyy > 1)
+				funnyyyyy *= funnyyyyy;
+			bg.angle = funnyyyyy/3.5;
+			bg.x = funnyyyyy/2;
+			bg.y = funnyyyyy*2.75;
+
+			if (songs[curIndex].songName.toLowerCase() == "normalized")
+				funnyStartTime = fullElapsed;
+		}
 
 		var posind:Int = 0;
 		for (i in 0...songs.length)
@@ -218,6 +234,17 @@ class FreeplayState extends MusicBeatState
 				songs[i].portrait.angle += songs[i].rotAmount*e*127.001;
 				songs[i].portrait.scale.x = 1 + Math.cos(songs[i].portrait.angle / 5)/5;
 				songs[i].portrait.scale.y = 1 + Math.sin(songs[i].portrait.angle / 5)/5;
+
+				songs[i].portrait.offset.x = FlxG.random.int(-25, 25) * Math.sin(songs[i].portrait.angle);
+
+				songs[i].icon.scale.x = Math.sin(fullElapsed);
+				songs[i].text.angle = FlxG.random.int(-10, 10);
+
+				for (i in songs[i].text.lettersArray)
+				{
+					i.offset.x = FlxG.random.int(-15, 15);
+					i.offset.y = FlxG.random.int(-15, 15);
+				}
 			}
 			var a:Float = 0;
 			for (o in 0...songs[i].text.lettersArray.length)
