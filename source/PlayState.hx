@@ -3257,18 +3257,10 @@ class PlayState extends MusicBeatState
 					prevCamFollow = camFollow;
 					prevCamFollowPos = camFollowPos;
 
-					var nextSongGonnaSuck:Bool = originallyWantedDiffName.toLowerCase() == "hard" && nextSong.mania != 0;
-					var bruhFunction = function(theSong:SwagSong)
-					{
-						PlayState.SONG = theSong;
-						FlxG.sound.music.stop();
-						cancelMusicFadeTween();
-						LoadingState.loadAndSwitchState(new PlayState());
-					};
-					if (nextSongGonnaSuck)
-						openSubState(new PlayStateManiaOptionSubState(bruhFunction));
-					else
-						bruhFunction(nextSong);
+					PlayState.SONG = nextSong;
+					FlxG.sound.music.stop();
+					cancelMusicFadeTween();
+					LoadingState.loadAndSwitchState(new PlayState());
 				}
 			}
 			else
