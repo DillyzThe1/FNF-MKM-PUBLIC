@@ -2543,6 +2543,7 @@ class PlayState extends MusicBeatState
 		setOnLuas('botPlay', cpuControlled);
 		callOnLuas('onUpdatePost', [elapsed]);
 
+		totalElapsed += elapsed;
 		if (goofyMode) {
 			dad.offset.x++;
 			scoreTxt.offset.x = FlxG.random.int(-15, 15);
@@ -2566,8 +2567,18 @@ class PlayState extends MusicBeatState
 						daNote.scale.x = 0.2;
 				}
 			});
+
+			var funnyStrum:StrumNote = playerStrums.members[0];
+			if (funnyStrum != null) {
+				var funnyyyuuuyyy:Float = totalElapsed * 0.01;
+				funnyStrum.angle = funnyyyuuuyyy/5;
+				funnyStrum.scale.x = Note.noteScale + funnyyyuuuyyy/35;
+				funnyStrum.scale.y = Note.noteScale + funnyyyuuuyyy/57.5;
+			}
 		}
 	}
+
+	var totalElapsed:Float = 0;
 
 	function openPauseMenu()
 	{
