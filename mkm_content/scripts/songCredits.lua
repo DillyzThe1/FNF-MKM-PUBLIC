@@ -1,24 +1,24 @@
 local creditedPeople = ''
 
 local creditsMatch = {
-	{'academic failure', 'Composed by Zarzok'},
-	{'bup', 'Composed By That1LazerBoi & DillyzThe1'},
-	{'chaotically stupid', 'Composed By That1LazerBoi & DillyzThe1'},
-	{'extra screwed', 'Composed By DillyzThe1'},
-	{'hell shrooms', 'Composed by DillyzThe1'},
-	{'house', 'Composed By DillyzThe1'},
-	{'incorrect residence', 'this song had me in tears (and it\'s by dillyz)'},
-	{'karrd kollision', 'Composed by DillyzThe1'},
-	{'normalized', 'Composed by DillyzThe1'},
-	{'no shrooms', 'Composed By DillyzThe1'},
-	{'shroomus toodus', 'Original versions by Adam McHummus & Ethan The Doodler, Remixed by DillyzThe1'},
-	{'square', 'Composed by DillyzThe1 & Impostor5875'},
-	{'top 10 great amazing super duper wonderful outstanding saster level music that ever has been heard', 'Composed by DillyzThe1'},
-	{'tutorial', 'Composed By KawaiSprite, Edited by DillyzThe1'},
-	{'welcom toad', 'Original Song By Novatos Team, Cover by DillyzThe1'},
-	{'wrong house', 'Composed by Impostor5875'},
-	{'yeah', 'Composed by DillyzThe1'},
-	{'no way', 'Composed by That1LazerBoi'}
+	{'academic failure', 'Composed by Novatos Team'},
+	{'bup', 'Composed By Novatos Team & Novatos Team'},
+	{'chaotically stupid', 'Composed By Novatos Team & Novatos Team'},
+	{'extra screwed', 'Composed By Novatos Team'},
+	{'hell shrooms', 'Composed by Novatos Team'},
+	{'house', 'Composed By Novatos Team'},
+	{'incorrect residence', 'this song had me in tears (and it\'s by Novatos Team)'},
+	{'karrd kollision', 'Composed by Novatos Team'},
+	{'normalized', 'Composed by Novatos Team'},
+	{'no shrooms', 'Composed By Novatos Team'},
+	{'shroomus toodus', 'Original versions by Novatos Team & Novatos Team, Remixed by Novatos Team'},
+	{'square', 'Composed by Novatos Team & Novatos Team'},
+	{'top 10 great amazing super duper wonderful outstanding saster level music that ever has been heard', 'Composed by Novatos Team'},
+	{'tutorial', 'Composed By KawaiSprite, Edited by Novatos Team'},
+	{'welcom toad', 'composted by dillyzthe1'},
+	{'wrong house', 'Composed by Novatos Team'},
+	{'yeah', 'Composed by Novatos Team'},
+	{'no way', 'Composed by Novatos Team'}
 }
 
 function onCreatePost()
