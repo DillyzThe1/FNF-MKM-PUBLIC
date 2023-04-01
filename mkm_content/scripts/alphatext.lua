@@ -19,7 +19,7 @@ function onCreatePost()
 	if alphaaaa() then 
 		modeAlpha = true
 		textY = getProperty('healthBarBG.y') + 56
-		makeLuaText('alphaTxt',songName .. " - " .. difficultyName .. " | KE 1.5.4 EK", 0, getPropertyFromClass('flixel.FlxG','width')/2, textY)
+		makeLuaText('alphaTxt',string.lower(songName) .. " - " .. difficultyName .. " | KE 1.5.4 EK", 0, getPropertyFromClass('flixel.FlxG','width')/2, textY)
 		setTextSize('alphaTxt',16)
 		setTextBorder('alphaTxt',1.25,'0xFF000000')
 		addLuaText('alphaTxt')
@@ -81,7 +81,7 @@ function onUpdatePost()
 			end
 		end
 		setProperty("scoreTxt.text", "Score: " .. score .. " | Combo Breaks: " .. misses .. " | Accuracy:" .. ratingPercent .. " % | " .. ratingName)
-		setProperty("timeTxt.text", songName)
+		setProperty("timeTxt.text", string.lower(songName))
 		setProperty("timeTxt.y", getProperty("timeBar.y") - 4)
 	end
 end
