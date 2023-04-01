@@ -1143,7 +1143,6 @@ class PlayState extends MusicBeatState
 		CustomFadeTransition.nextCamera = camCaptions;
 
 		closedCaptions = new CaptionObject("", [camCaptions]);
-		closedCaptions.animate = true;
 		add(closedCaptions);
 	}
 
@@ -2549,6 +2548,24 @@ class PlayState extends MusicBeatState
 			scoreTxt.offset.x = FlxG.random.int(-15, 15);
 			scoreTxt.offset.y = FlxG.random.int(-15, 15);
 			scoreTxt.angle = FlxG.random.int(-15, 15);
+
+			notes.forEachAlive(function(daNote:Note) {
+				if (Std.int(daNote.strumTime) % 12 == 0)
+				{
+					daNote.angle += FlxG.random.int(0, 100);
+					daNote.x += FlxG.random.int(-25, 25);
+					daNote.y += FlxG.random.int(-10, 10);
+					daNote.alpha += FlxG.random.int(-10, 10)/100;
+					if (daNote.alpha < 0)
+						daNote.alpha = 0;
+					if (daNote.alpha > 1)
+						daNote.alpha = 1;
+
+					daNote.scale.x += FlxG.random.int(-10, 10)/100;
+					if (daNote.scale.x < 0.2)
+						daNote.scale.x = 0.2;
+				}
+			});
 		}
 	}
 

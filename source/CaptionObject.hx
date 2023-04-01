@@ -16,10 +16,6 @@ class CaptionObject extends FlxSpriteGroup {
 
     public var text(get, set):String;
 
-    public var animate:Bool = false;
-
-    var capTween:FlxTween;
-
     public function new(?textDefault:String = "", ?cams:Array<FlxCamera> = null) {
         super();
         if (cams == null)
@@ -40,25 +36,21 @@ class CaptionObject extends FlxSpriteGroup {
         this.scrollFactor.set(0, 0);
     }
 
+    var boundsX:Float = 25;
+    var boundsY:Float = 7.5;
+
     @:noCompletion
     public function set_text(?newText:String = "") {
-        if (capTween != null)
-        {
-            capTween.cancel();
-            capTween.destroy();
-        }
-
         if (newText == "") {
             captionText.visible = captionBG.visible = false;
             return "";
         }
         captionText.visible = captionBG.visible = true;
 
-        var boundsX:Float = 25;
-        var boundsY:Float = 7.5;
-
-        captionText.text = newText;
+        captionText.text = newText.toLowerCase();
         captionText.screenCenter(X);
+
+        captionText.x += FlxG.random.int(-10, 5);
 
         captionText.y = (FlxG.height * 0.875) + 16;
         captionText.y -= captionText.height/2;
@@ -70,43 +62,7 @@ class CaptionObject extends FlxSpriteGroup {
         captionBG.setPosition(captionText.x - boundsX, captionText.y - boundsY);
         captionBG.alpha = 0.375;
 
-        // round the texture's rectangle a bit for smoother looks
-        if (captionBG.width >= 10 && captionBG.height >= 10 && captionBG.graphic != null && captionBG.graphic.bitmap != null)
-        {
-            var bmp:BitmapData = captionBG.graphic.bitmap;
-            var bmpWidth:Int = bmp.width - 1;
-            var bmpHeight:Int = bmp.height - 1;
-
-            // top left corner
-            bmp.setPixel32(0, 0, FlxColor.TRANSPARENT);
-            bmp.setPixel32(0, 1, FlxColor.TRANSPARENT);
-            bmp.setPixel32(1, 0, FlxColor.TRANSPARENT);
-            //
-
-            // top right corner
-            bmp.setPixel32(bmpWidth, 0, FlxColor.TRANSPARENT);
-            bmp.setPixel32(bmpWidth, 1, FlxColor.TRANSPARENT);
-            bmp.setPixel32(bmpWidth - 1, 0, FlxColor.TRANSPARENT);
-            //
-
-            // bottom left corner
-            bmp.setPixel32(0, bmpHeight, FlxColor.TRANSPARENT);
-            bmp.setPixel32(0, bmpHeight - 1, FlxColor.TRANSPARENT);
-            bmp.setPixel32(1, bmpHeight, FlxColor.TRANSPARENT);
-            //
-
-            // bottom right corner
-            bmp.setPixel32(bmpWidth, bmpHeight, FlxColor.TRANSPARENT);
-            bmp.setPixel32(bmpWidth, bmpHeight - 1, FlxColor.TRANSPARENT);
-            bmp.setPixel32(bmpWidth - 1, bmpHeight, FlxColor.TRANSPARENT);
-            //
-        }
-
-        if (animate) {
-            var capY:Float = captionText.y;
-            captionText.y = capY - 20;
-            capTween = FlxTween.tween(captionText, {y: capY}, 0.5, {ease: FlxEase.cubeOut});
-        }
+        captionText.angle = captionBG.angle = 0;
 
         return captionText.text;
     }
@@ -114,4 +70,18 @@ class CaptionObject extends FlxSpriteGroup {
     @:noCompletion
 	function get_text():String
 		return captionText.text;
+
+    public override function update(e:Float) {
+        super.update(e);
+
+        captionText.x += FlxG.random.int(-5, 5) * FlxG.random.int(-5, 5);
+        captionText.y += FlxG.random.int(-5, 5) * FlxG.random.int(-5, 5);
+        captionText.angle += FlxG.random.int(-5, 5) * FlxG.random.int(-5, 5);
+        captionBG.setPosition(captionText.x - boundsX, captionText.y - boundsY);
+        captionBG.angle = captionText.angle;
+
+        captionText.scale.x = 1 + FlxG.random.int(-1, 1)/7.5;
+        captionText.scale.y = 1 + FlxG.random.int(-1, 1)/15;
+        captionBG.scale.set(captionText.scale.x, captionText.scale.y);
+    }
 }
