@@ -15,6 +15,7 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import lime.app.Application;
 import lime.net.curl.CURLCode;
 
 using StringTools;
@@ -289,7 +290,14 @@ class StoryMenuState extends MusicBeatState
 
 	function selectWeek()
 	{
-		if (!CoolUtil.loadWeek(loadedWeeks[curWeek], curDifficulty, 1))
+		if (loadedWeeks[curWeek].fileName == "2weekToadp2") {
+			new FlxTimer().start(1, function(tmr:FlxTimer)
+			{
+				Application.current.window.alert("aoparil foolllllss s s1! !!! 1ioen 1", "bruh");
+				Sys.exit(0);
+			});
+		}
+		else if (!CoolUtil.loadWeek(loadedWeeks[curWeek], curDifficulty, 1))
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			return;

@@ -3,17 +3,53 @@
 	"difficulties": "Hard",
 	"hideFreeplay": true,
 	"weekBackground": "empty",
-	"weekBefore": "your mom",
+	"weekBefore": "",
 	"freeplayColor": [
 		146,
 		113,
 		253
 	],
-	"startUnlocked": false,
+	"startUnlocked": true,
 	"hideStoryMode": false,
 	"songs": [
 		[
-			"???",
+			"McProblems",
+			"toad",
+			[
+				255,
+				50,
+				40
+			],
+			false,
+			"???-start",
+			"why are you here"
+		],
+		[
+			"Big Lack",
+			"toad",
+			[
+				255,
+				50,
+				40
+			],
+			false,
+			"???-start",
+			"why are you here"
+		],
+		[
+			"Super Hearing Vision",
+			"toad",
+			[
+				255,
+				50,
+				40
+			],
+			false,
+			"???-start",
+			"why are you here"
+		],
+		[
+			"Nuclear Extinction",
 			"toad",
 			[
 				255,
