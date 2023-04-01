@@ -156,7 +156,7 @@ class TitleState extends MusicBeatState
 			persistentDraw = true;
 
 			var date = Date.now();
-			CoolUtil.fredMode = (date.getHours() == 3 && FlxG.random.bool(1)) || (date.getFullYear() == 2023 && date.getMonth() == 3 && date.getDate() == 1);
+			CoolUtil.fredMode = false;//(date.getHours() == 3 && FlxG.random.bool(1)) || (date.getFullYear() == 2023 && date.getMonth() == 3 && date.getDate() == 1);
 			trace(!CoolUtil.fredMode ? "normal mkm lol" : "THE THA THE - THE THE THI THE - THE THA THE - THE THE THI THAAAAAAAAAH");
 
 			if (CoolUtil.fredMode)
