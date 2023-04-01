@@ -1,5 +1,12 @@
 local creditedPeople = ''
 
+function alphaaaa()
+	if string.lower(songName) == "normalized" then 
+		return false
+	end
+	return true
+end
+
 local creditsMatch = {
 	{'academic failure', 'Composed by Novatos Team'},
 	{'bup', 'Composed By Novatos Team & Novatos Team'},
@@ -9,7 +16,7 @@ local creditsMatch = {
 	{'house', 'Composed By Novatos Team'},
 	{'incorrect residence', 'this song had me in tears (and it\'s by Novatos Team)'},
 	{'karrd kollision', 'Composed by Novatos Team'},
-	{'normalized', 'Composed by Novatos Team'},
+	{'normalized', 'Composed by DillyzThe1'},
 	{'no shrooms', 'Composed By Novatos Team'},
 	{'shroomus toodus', 'Original versions by Novatos Team & Novatos Team, Remixed by Novatos Team'},
 	{'square', 'Composed by Novatos Team & Novatos Team'},
@@ -50,7 +57,7 @@ function onEvent(ev, v1, v2)
 end
 
 function onUpdatePost()
-	if string.lower(difficultyName) == "alpha" then 
+	if alphaaaa() then 
 		setProperty('creditsTxt.x',getPropertyFromClass('flixel.FlxG','width') - getTextWidth('creditsTxt') - 10)
 	else
 		setProperty('creditsTxt.x',getPropertyFromClass('flixel.FlxG','width')/2 - getTextWidth('creditsTxt')/2)

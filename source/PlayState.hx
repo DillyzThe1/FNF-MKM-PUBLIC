@@ -514,6 +514,8 @@ class PlayState extends MusicBeatState
 		});
 	}
 
+	var goofyMode:Bool = false;
+
 	override public function create()
 	{
 		Paths.clearStoredMemory();
@@ -623,6 +625,9 @@ class PlayState extends MusicBeatState
 		{
 			detailsText = "Freeplay";
 		}
+
+		if (SONG.song.toLowerCase() != "normalized")
+			goofyMode = true;
 
 		// String for when the game is paused
 		detailsPausedText = "Paused - " + detailsText;
@@ -2208,8 +2213,10 @@ class PlayState extends MusicBeatState
 			- (150 * iconP2.scale.x) / 2
 			- iconOffset * 2;
 
-		iconP2.offset.x = dad.offset.x;
-		iconP2.offset.y = dad.offset.y;
+		if (goofyMode) {
+			iconP2.offset.x = dad.offset.x;
+			iconP2.offset.y = dad.offset.y;
+		}
 
 		if (health > 2)
 			health = 2;
@@ -2537,10 +2544,12 @@ class PlayState extends MusicBeatState
 		setOnLuas('botPlay', cpuControlled);
 		callOnLuas('onUpdatePost', [elapsed]);
 
-		dad.offset.x++;
-		scoreTxt.offset.x = FlxG.random.int(-15, 15);
-		scoreTxt.offset.y = FlxG.random.int(-15, 15);
-		scoreTxt.angle = FlxG.random.int(-15, 15);
+		if (goofyMode) {
+			dad.offset.x++;
+			scoreTxt.offset.x = FlxG.random.int(-15, 15);
+			scoreTxt.offset.y = FlxG.random.int(-15, 15);
+			scoreTxt.angle = FlxG.random.int(-15, 15);
+		}
 	}
 
 	function openPauseMenu()

@@ -1,15 +1,22 @@
 local modeAlpha = false
 local textY = 0
 
+function alphaaaa()
+	if string.lower(songName) == "normalized" then 
+		return false
+	end
+	return true
+end
+
 function onCreate()
-	if string.lower(difficultyName) == "alpha" then
+	if alphaaaa() then
 		setProperty("doMiddleScroll", false)
 		setProperty("hideOpponentArrows", false)
 	end
 end
 
 function onCreatePost()
-	if string.lower(difficultyName) == "alpha" then 
+	if alphaaaa() then 
 		modeAlpha = true
 		textY = getProperty('healthBarBG.y') + 56
 		makeLuaText('alphaTxt',songName .. " - " .. difficultyName .. " | KE 1.5.4 EK", 0, getPropertyFromClass('flixel.FlxG','width')/2, textY)
@@ -39,7 +46,7 @@ function onCreatePost()
 		setProperty("timeBar.scale.x", 1.5)
 	end
 	
-	if (string.lower(difficultyName) == "alpha" or string.lower(difficultyName) == "beta") and getRandomBool(20) then
+	if alphaaaa() and getRandomBool(20) then
 		makeLuaSprite("sadsquid", "sadsquid", 0, 0)
 		setObjectCamera("sadsquid", "camHUD")
 		addLuaSprite("sadsquid", false)
@@ -80,7 +87,7 @@ function onUpdatePost()
 end
 
 function onEvent(n,v1,v2)
-	if string.lower(n) == 'change character' and string.lower(difficultyName) == "alpha" then
+	if string.lower(n) == 'change character' and alphaaaa() then
 		runHaxeCode("PlayState.instance.healthBar.createColoredEmptyBar(0xFFFF0000);")
 		runHaxeCode("PlayState.instance.healthBar.updateBar();")
 		runHaxeCode("PlayState.instance.healthBar.createColoredFilledBar(0xFF66FF33);")
