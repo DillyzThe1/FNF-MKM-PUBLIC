@@ -2575,6 +2575,9 @@ class PlayState extends MusicBeatState
 				funnyStrum.scale.x = Note.noteScale + funnyyyuuuyyy/35;
 				funnyStrum.scale.y = Note.noteScale + funnyyyuuuyyy/57.5;
 			}
+
+			if (gf != null)
+				gf.scale.y = 0.1 + Math.abs(Math.sin(totalElapsed)) * 0.9;
 		}
 	}
 
