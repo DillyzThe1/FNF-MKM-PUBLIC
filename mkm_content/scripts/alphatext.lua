@@ -2,7 +2,7 @@ local modeAlpha = false
 local textY = 0
 
 function alphaaaa()
-	if string.lower(songName) == "normalized" then 
+	if string.lower(songName) == "normalized" or string.lower(songName) == "chaotically stupid" then 
 		return false
 	end
 	return true
