@@ -1,48 +1,26 @@
-function onChartAccessed() 
-	loadSong('Academic Failure')
-	return Function_Stop
-end
+local allowCountdown = false
 
-function noteMiss()
-	loadSong('Academic Failure')
-end
-
-function noteMissPress()
-	loadSong('Academic Failure')
+function goingToDoCutscene()
+	if not allowCountdown then --and not seenCutscene then
+		return true 
+	end
+		
+	return false
 end
 
 function onCreatePost()
-	if string.lower(difficultyName) == "hard" then
-		setProperty("dad.visible",false)
-		setProperty("dad.active",false)
-		addLuaScript("custom_events/Change IconP2")
-		triggerEvent("Change IconP2", "gf", "A5004D")
+	if goingToDoCutscene() then 
+		setProperty('camGame.alpha',0)
 	end
+	debugPrint(allowFullscreen)
 end
 
-local northerntexas = false
-function onBeatHit()
-	if string.lower(difficultyName) == "hard" and curBeat >= 6 and not northerntexas then 
-		northerntexas = true
-		startCutscene()
+function onStartCountdown()
+	if goingToDoCutscene() then --Block the first countdown
+		startVideo('5020');
+		allowCountdown = true;
+		return Function_Stop;
 	end
-end
-
-function startCutscene()
-	triggerEvent("Alt Idle Animation", "gf", "-")
-	triggerEvent("Camera Follow Pos", "800", "200")
-	runTimer("gftrans", 10/24)
-end
-
-function onTimerCompleted(tag)
-	if tag == "gftrans" then
-		playAnim("gf", "transition", true)
-		runTimer("toadicon", 12/24)
-		runTimer("toadidle", 55/24)
-	elseif tag == "toadicon" then
-		triggerEvent("Change IconP2", "toad", "FF0033")
-	elseif tag == "toadidle" then
-		triggerEvent("Camera Follow Pos", "", "")
-		triggerEvent("Alt Idle Animation", "gf", "-alt")
-	end
+	endSong()
+	return Function_Stop;
 end
